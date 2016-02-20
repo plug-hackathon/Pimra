@@ -33,7 +33,7 @@ def mfoc():
 
 
 @app.route("/nfc/write", methods=['GET'])
-def poll():
+def clone_card():
     """
     Write to a blank card using nfc-mfclassic
     """
