@@ -13,7 +13,7 @@ def nfc_poll(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
     output = proc.communicate()[0]
-    return output
+    return "nfc-poll saved as " + dump_name
 
 
 def nfc_dump(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
@@ -28,7 +28,7 @@ def nfc_dump(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
     return "nfc-read dump saved as " + dump_name
 
 
-def mfoc(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
+def mfoc_dump(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
     """
     mfoc to attemp cracking an encrypted card
     """
@@ -39,3 +39,12 @@ def mfoc(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
     output = proc.communicate()[0]
 
     return "MFOC dump saved as " + dump_name
+
+def nfc_write(original_dump):
+    """
+    Write dump file to unlocked card
+    """
+    cmd = "nfc-mfclassic W a " + DUMP_PATH + original_dump
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+    
+    return "Cloned " + original_dump
