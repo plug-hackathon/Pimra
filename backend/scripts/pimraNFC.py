@@ -2,7 +2,7 @@
 import subprocess
 from datetime import datetime
 
-DUMP_PATH = "/home/rasmus/documents/dev/Pimra/backend/dumps/"
+DUMP_PATH = "/home/root/Pimra/backend/dumps/"
 
 def nfc_poll(dump_name=datetime.now().strftime("%y-%m-%d-%H:%M")):
     """
