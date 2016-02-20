@@ -24,6 +24,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/nfc', {
+        templateUrl: 'views/nfc.html',
+        controller: 'NfcCtrl',
+        controllerAs: 'nfc'
+      })
       .otherwise({
         redirectTo: '/'
       });
