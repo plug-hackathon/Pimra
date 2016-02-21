@@ -10,46 +10,46 @@ def nfc_poll(dump_name=DEFAULT_NAME):
     """
     nfc-poll to collect UID
     """
-    save_path = DUMP_PATH + "poll/"
-    cmd = "nfc-poll > " + save_path + dump_name
+    save_path = DUMP_PATH + "poll/" + dump_name + ".mfd"
+    cmd = "nfc-poll > " + save_path
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-    output = proc.communicate()[0]
-    return "nfc-poll saved as " + dump_name
+    output = proc.communicate()
+    return "nfc-poll saved to: " + save_path
 
 
 def nfc_dump(dump_name=DEFAULT_NAME):
     """
     nfc-mfclassic to attempt a full card dump
     """
-    print('Running nfc-mfclassic')
-    save_path = DUMP_PATH + "full/"
-    print('Saving dump to: '+save_path + dump_name)
-    cmd = "nfc-mfclassic r a /root/nfcstuff/Pimra/backend_django/dumps/full/test1.mfd"
+    print('Running nfc-mfclassic...')
+    save_path = DUMP_PATH + "full/" + dump_name + ".mfd"
+    print('Saving dump to: '+save_path)
+    cmd = "nfc-mfclassic r a " + save_path
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
     output = proc.communicate()
     print(output)
     print('Done....')
-    return "nfc-read dump saved as " + dump_name
+    return "nfc-read dump saved to: " + save_path
 
 
 def mfoc_dump(dump_name=DEFAULT_NAME):
     """
     mfoc to attemp cracking & dumping a card
     """
-    save_path = DUMP_PATH + "mfoc/"
-    cmd = "mfoc -P 500 -O " + save_path + dump_name
+    save_path = DUMP_PATH + "mfoc/" + dump_name + ".mfd"
+    cmd = "mfoc -P 500 -O " + save_path
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-    output = proc.communicate()[0]
-    return "MFOC dump saved as " + dump_name
+    output = proc.communicate()
+    return "MFOC dump saved to: " + save_path
 
 def nfc_write(original_dump):
     """
     Write dump file to unlocked card
     """
-    cmd = "nfc-mfclassic W a " + DUMP_PATH + original_dump
+    cmd = "nfc-mfclassic W a " + DUMP_PATH + "full/" + original_dump
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)    
     return "Cloned " + original_dump
