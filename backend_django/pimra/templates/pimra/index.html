@@ -1,57 +1,65 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Pimra</title>
+    <link rel="stylesheet" type="css" href="{% static 'css/materialize.min.css' %}"/>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
 </head>
 <body>
 
-<hr>
+<div class="container halign">
 
-<h2>NFC Dump</h2>
-
-<form method="POST" action="nfc/view_dump_nfc">
-    {% csrf_token %}
-    {{ dumpform }}
-    <input type="submit" value="Dump" />
-    </div>
-</form>
-
-<hr>
-
-
-<h2>NFC mfoc</h2>
-
-<form method="POST" action="nfc/view_dump_mfoc">
-    {% csrf_token %}
-    {{ dumpform }}
-    <input type="submit" value="Dump" />
-    </div>
-</form>
-
-<hr>
-
-
-<h2>NFC poll</h2>
-
-<form method="POST" action="nfc/view_nfc_poll">
-    {% csrf_token %}
-    {{ dumpform }}
-    <input type="submit" value="Dump" />
-    </div>
-</form>
-
-<hr>
-
-{% for file in writeform %}
-    <form method="POST" action="nfc/view_nfc_write">
-        {% csrf_token %}
-        {{ file }}
-        <input type="submit" value="Write to card" />
-        </div>
+<div class="divider"></div>
+<div class="section">
+<h6>NFC MFClassic</h6>
+  <div class="input-field">
+    <form class="row" style="width:100%;" method="POST" action="nfc/view_dump_nfc">
+      {% csrf_token %}
+      <div> {{ dumpform }} </div>
+      <input class="btn" style="width:100%;" type="submit" value="Dump" />
     </form>
-{% endfor %}
+  </div>
+</div>
 
+<div class="divider"></div>
+<div class="section">
+<h6>MFOC</h6>
+  <div class="input-field">
+    <form class="row" style="width:100%;" method="POST" action="nfc/view_dump_mfoc">
+      {% csrf_token %}
+      <div> {{ dumpform }} </div>
+      <input class="btn" style="width:100%;" type="submit" value="Dump" />
+    </form>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section">
+<h6>NFC Poll</h6>
+  <div class="input-field">
+    <form class="row" style="width:100%;" method="POST" action="nfc/view_dump_poll">
+      {% csrf_token %}
+      <div> {{ dumpform }} </div>
+      <input class="btn" style="width:100%;" type="submit" value="Dump" />
+    </form>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section">
+<h6>List of Dumps</h6>
+  {% for file in writeform %}
+  <form method="POST" action="nfc/view_dump_mfoc">
+    {% csrf_token %}
+    {{ file }}
+    <input type="submit" value="Dump" />
+  </form>
+  {% endfor %}
+</div>
+</div>
 
 </body>
 </html>
