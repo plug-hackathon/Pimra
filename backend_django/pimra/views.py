@@ -6,7 +6,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 
-from pimra.forms import DumpForm
+from pimra.forms import DumpForm, WriteForm
 from pimra.scripts import pimraNFC
 
 

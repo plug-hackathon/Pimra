@@ -2,8 +2,9 @@
 import subprocess
 from datetime import datetime
 
-DUMP_PATH = "/home/root/Pimra/backend/dumps/"
+DUMP_PATH = "/home/root/nfcstuff/Pimra/backend_django/dumps/"
 DEFAULT_NAME = datetime.now().strftime("%y-%m-%d-%H:%M")
+
 
 def nfc_poll(dump_name=DEFAULT_NAME):
     """
@@ -21,11 +22,15 @@ def nfc_dump(dump_name=DEFAULT_NAME):
     """
     nfc-mfclassic to attempt a full card dump
     """
+    print('Running nfc-mfclassic')
     save_path = DUMP_PATH + "full/"
+    print('Saving dump to: '+save_path)
     cmd = "nfc-mfclassic r a " + save_path + dump_name + ".mfd"
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+
     output = proc.communicate()[0]
+    print('Done....')
     return "nfc-read dump saved as " + dump_name
 
 
