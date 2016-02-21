@@ -17,7 +17,10 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
+
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;';
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
