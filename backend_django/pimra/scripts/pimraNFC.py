@@ -59,6 +59,7 @@ def mfoc_dump(dump_path, dump_name=DEFAULT_NAME):
     print('Done...')
     return "MFOC dump saved to: " + save_path
 
+
 def nfc_write(dump_path):
     """
     Write dump file to unlocked card
@@ -67,4 +68,4 @@ def nfc_write(dump_path):
     cmd = "nfc-mfclassic W a " + dump_path
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)    
 
-    return "Cloned " + original_dump
+    #return "Cloned " + original_dump

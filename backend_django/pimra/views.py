@@ -67,3 +67,13 @@ def view_nfc_poll(request):
     return HttpResponse('Running: view_nfc_poll')
 
 
+def view_nfc_write(request):
+
+    writeform = WriteForm(request.POST)
+    if writeform.is_valid():
+        dump_path = BASE_DIR + "/poll/"
+        print(writeform.cleaned_data['filename'])
+        #pimraNFC.nfc_write(dump_path, writeform.cleaned_data['filename'])
+
+    return HttpResponse('Add card to reader.')
+

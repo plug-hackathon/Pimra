@@ -10,46 +10,46 @@
 
 <h2>NFC Dump</h2>
 
-  <form method="POST" action="nfc/view_dump_nfc">
+<form method="POST" action="nfc/view_dump_nfc">
     {% csrf_token %}
     {{ dumpform }}
-      <input type="submit" value="Dump" />
+    <input type="submit" value="Dump" />
     </div>
-  </form>
+</form>
 
 <hr>
 
 
 <h2>NFC mfoc</h2>
 
-  <form method="POST" action="nfc/view_dump_mfoc">
+<form method="POST" action="nfc/view_dump_mfoc">
     {% csrf_token %}
     {{ dumpform }}
-      <input type="submit" value="Dump" />
+    <input type="submit" value="Dump" />
     </div>
-  </form>
+</form>
 
 <hr>
 
 
 <h2>NFC poll</h2>
 
-  <form method="POST" action="nfc/view_nfc_poll">
+<form method="POST" action="nfc/view_nfc_poll">
     {% csrf_token %}
     {{ dumpform }}
-      <input type="submit" value="Dump" />
+    <input type="submit" value="Dump" />
     </div>
-  </form>
+</form>
 
 <hr>
 
 {% for file in writeform %}
-      <form method="POST" action="nfc/view_dump_mfoc">
-    {% csrf_token %}
-    {{ file }}
-      <input type="submit" value="Dump" />
-    </div>
-  </form>
+    <form method="POST" action="nfc/view_nfc_write">
+        {% csrf_token %}
+        {{ file }}
+        <input type="submit" value="Write to card" />
+        </div>
+    </form>
 {% endfor %}
 
 
