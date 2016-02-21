@@ -2,7 +2,7 @@
 import subprocess
 from datetime import datetime
 
-DUMP_PATH = "/home/root/nfcstuff/Pimra/backend_django/dumps/"
+DUMP_PATH = "/root/nfcstuff/Pimra/backend_django/dumps/"
 DEFAULT_NAME = datetime.now().strftime("%y-%m-%d-%H:%M")
 
 
@@ -25,7 +25,7 @@ def nfc_dump(dump_name=DEFAULT_NAME):
     print('Running nfc-mfclassic')
     save_path = DUMP_PATH + "full/"
     print('Saving dump to: '+save_path + dump_name)
-    cmd = "nfc-mfclassic r a /home/root/nfcstuff/Pimra/backend_django/dumps/full/test1.mfd"
+    cmd = "nfc-mfclassic r a /root/nfcstuff/Pimra/backend_django/dumps/full/test1.mfd"
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
