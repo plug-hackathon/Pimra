@@ -32,7 +32,7 @@ def view_dump_nfc(request):
 
     dumpform = DumpForm(request.POST)
     if dumpform.is_valid():
-
+        print(dumpform.cleaned_data['filename'])
         pimraNFC.nfc_dump(dumpform.cleaned_data['filename'])
 
     return HttpResponse('Running: view_dump_nfc')

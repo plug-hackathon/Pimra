@@ -24,12 +24,13 @@ def nfc_dump(dump_name=DEFAULT_NAME):
     """
     print('Running nfc-mfclassic')
     save_path = DUMP_PATH + "full/"
-    print('Saving dump to: '+save_path)
-    cmd = "nfc-mfclassic r a " + save_path + dump_name + ".mfd"
+    print('Saving dump to: '+save_path + dump_name)
+    cmd = "nfc-mfclassic r a " + save_path + "test1.mfd"
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
-    output = proc.communicate()[0]
+    output = proc.communicate()
+    print(output)
     print('Done....')
     return "nfc-read dump saved as " + dump_name
 
