@@ -1,7 +1,10 @@
 
+from datetime import datetime
+
 from django import forms
 
 
-# Form
+# Dump form
 class DumpForm(forms.Form):
-    filename = forms.CharField()
+    filename = forms.CharField(initial=datetime.now().strftime("%y-%m-%d-%H:%M.dump"))
+

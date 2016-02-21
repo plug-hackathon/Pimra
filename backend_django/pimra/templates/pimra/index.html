@@ -6,7 +6,11 @@
 </head>
 <body>
 
-  <form method="POST" action="/dump">
+<hr>
+
+<h2>NFC Dump</h2>
+
+  <form method="POST" action="nfc/view_dump_nfc">
     {% csrf_token %}
     {{ dumpform }}
       <input type="submit" value="Dump" />
@@ -14,6 +18,34 @@
   </form>
 
 <hr>
+
+
+<h2>NFC mfoc</h2>
+
+  <form method="POST" action="nfc/view_dump_mfoc">
+    {% csrf_token %}
+    {{ dumpform }}
+      <input type="submit" value="Dump" />
+    </div>
+  </form>
+
+<hr>
+
+
+<h2>NFC poll</h2>
+
+  <form method="POST" action="nfc/view_nfc_poll">
+    {% csrf_token %}
+    {{ dumpform }}
+      <input type="submit" value="Dump" />
+    </div>
+  </form>
+
+<hr>
+
+{% for file in onlyfiles %}
+<h3>{{file}}</h3>
+{% endfor %}
 
 
 </body>

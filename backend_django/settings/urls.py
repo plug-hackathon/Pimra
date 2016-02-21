@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from pimra.views import IndexTemplateView, dump_nfc
+from pimra import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', IndexTemplateView.as_view()),
-    url(r'^dump', dump_nfc)
+    url(r'^$', views.IndexTemplateView.as_view()),
+    url(r'^nfc/view_dump_nfc', views.view_dump_nfc),
+    url(r'^nfc/view_dump_mfoc', views.view_dump_mfoc),
+    url(r'^nfc/view_nfc_poll', views.view_nfc_poll),
+
 ]
