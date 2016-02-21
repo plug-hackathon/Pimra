@@ -11,15 +11,15 @@
 <body>
 
 <div class="container halign">
-
+<h5>Read</h5>
 <div class="divider"></div>
 <div class="section">
 <h6>NFC MFClassic</h6>
   <div class="input-field">
     <form class="row" style="width:100%;" method="POST" action="nfc/view_dump_nfc">
       {% csrf_token %}
-      <div> {{ dumpform }} </div>
-      <input class="btn" style="width:100%;" type="submit" value="Dump" />
+      <div class="col s8"> {{ dumpform }} </div>
+      <input class="btn col s4" type="submit" value="Dump" />
     </form>
   </div>
 </div>
@@ -30,8 +30,8 @@
   <div class="input-field">
     <form class="row" style="width:100%;" method="POST" action="nfc/view_dump_mfoc">
       {% csrf_token %}
-      <div> {{ dumpform }} </div>
-      <input class="btn" style="width:100%;" type="submit" value="Dump" />
+      <div class="col s8"> {{ dumpform }} </div>
+      <input class="btn col s4" type="submit" value="Dump" />
     </form>
   </div>
 </div>
@@ -42,20 +42,23 @@
   <div class="input-field">
     <form class="row" style="width:100%;" method="POST" action="nfc/view_dump_poll">
       {% csrf_token %}
-      <div> {{ dumpform }} </div>
-      <input class="btn" style="width:100%;" type="submit" value="Dump" />
+      <div class="col s8"> {{ dumpform }} </div>
+      <input class="btn col s4" type="submit" value="Dump" />
     </form>
   </div>
 </div>
 
+<h5>Write</h5>
 <div class="divider"></div>
 <div class="section">
-<h6>List of Dumps</h6>
   {% for file in writeform %}
-  <form method="POST" action="nfc/view_dump_mfoc">
+  <form class="row" style="width:100%;" method="POST" action="nfc/view_nfc_write">
     {% csrf_token %}
-    {{ file }}
-    <input type="submit" value="Dump" />
+     
+    <div disabled class="col s8"> 
+      {{ file }}
+    </div>
+    <input class="btn col s4" type="submit" value="Write" />
   </form>
   {% endfor %}
 </div>
