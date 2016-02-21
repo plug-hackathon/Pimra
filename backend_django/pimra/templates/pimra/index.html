@@ -43,8 +43,13 @@
 
 <hr>
 
-{% for file in onlyfiles %}
-<h3>{{file}}</h3>
+{% for file in writeform %}
+      <form method="POST" action="nfc/view_dump_mfoc">
+    {% csrf_token %}
+    {{ file }}
+      <input type="submit" value="Dump" />
+    </div>
+  </form>
 {% endfor %}
 
 

@@ -10,18 +10,26 @@ from pimra.forms import DumpForm, WriteForm
 from pimra.scripts import pimraNFC
 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))+'/dumps/')
 
 class IndexTemplateView(TemplateView):
 
+    def getWriteForms(self):
+        writeforms = [f for f in listdir(BASE_DIR) if isfile(join(BASE_DIR, f))]
+        print(writeforms)
+        return_forms = []
+        for file in writeforms:
+            form = WriteForm()
+            form.fields['filename'].initial = file
+            return_forms.append(form)
+
+        return return_forms
+
     def get_context_data(self, **kwargs):
 
-        onlyfiles = [f for f in listdir(BASE_DIR) if isfile(join(BASE_DIR, f))]
-        print(onlyfiles)
         context = super(IndexTemplateView, self).get_context_data(**kwargs)
         context['dumpform'] = DumpForm
-        context['onlyfiles'] = onlyfiles
+        context['writeform'] = self.getWriteForms()
 
         return context
 

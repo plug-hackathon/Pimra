@@ -10,6 +10,7 @@ from datetime import datetime
 
 DEFAULT_NAME = datetime.now().strftime("%y-%m-%d-%H:%M")
 
+
 def nfc_poll(dump_path, dump_name=DEFAULT_NAME):
     """
     nfc-poll to collect UID

@@ -10,4 +10,4 @@ class DumpForm(forms.Form):
 
 
 class WriteForm(forms.Form):
-    filename = forms.CharField()
+    filename = forms.CharField(initial=file)
