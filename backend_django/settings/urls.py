@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^nfc/view_dump_nfc', views.view_dump_nfc),
     url(r'^nfc/view_dump_mfoc', views.view_dump_mfoc),
     url(r'^nfc/view_nfc_poll', views.view_nfc_poll),
+    url(r'^nfc/view_nfc_write', views.view_nfc_write),
 
 ]
