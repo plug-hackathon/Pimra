@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.shortcuts import HttpResponse
 
+
 import os
 from os import listdir
 from os.path import isfile, join
@@ -10,7 +11,7 @@ from pimra.forms import DumpForm, WriteForm
 from pimra.scripts import pimraNFC
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))+'/dumps/')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))+'/dumps/full/')
 
 class IndexTemplateView(TemplateView):
 
@@ -71,9 +72,14 @@ def view_nfc_write(request):
 
     writeform = WriteForm(request.POST)
     if writeform.is_valid():
-        dump_path = BASE_DIR + "/poll/"
-        print(writeform.cleaned_data['filename'])
-        #pimraNFC.nfc_write(dump_path, writeform.cleaned_data['filename'])
+        print("Form is valid")
+        dump_path = BASE_DIR
+        print('basedir: '+BASE_DIR)
+        
+        print(dump_path+'/'+writeform.cleaned_data['filename'])
+        pimraNFC.nfc_write(dump_path+'/'+writeform.cleaned_data['filename'])
 
+    else:
+        print('form not valid')
     return HttpResponse('Add card to reader.')
 
