@@ -48,7 +48,7 @@ def mfoc_dump(dump_path, dump_name=DEFAULT_NAME):
     mfoc to attemp cracking & dumping a card 
     """
     print('Running mfoc...')
-    save_path = DUMP_PATH + "mfoc/" + dump_name + ".mfd"
+    save_path = dump_path + dump_name + ".mfd"
     cmd = "mfoc -P 500 -O " + save_path
     print('Saving dump to: ' + save_path)
 
