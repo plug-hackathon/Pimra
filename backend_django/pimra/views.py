@@ -33,7 +33,8 @@ def view_dump_nfc(request):
     dumpform = DumpForm(request.POST)
     if dumpform.is_valid():
         print(dumpform.cleaned_data['filename'])
-        pimraNFC.nfc_dump(dumpform.cleaned_data['filename'])
+        dump_path = BASE_DIR + "/full/"
+        pimraNFC.nfc_dump(dump_path, dumpform.cleaned_data['filename'])
 
     return HttpResponse('Running: view_dump_nfc')
 
@@ -42,8 +43,8 @@ def view_dump_mfoc(request):
 
     dumpform = DumpForm(request.POST)
     if dumpform.is_valid():
-
-        pimraNFC.mfoc_dump(dumpform.cleaned_data['filename'])
+        dump_path = BASE_DIR + "/mfoc/"
+        pimraNFC.mfoc_dump(dump_path, dumpform.cleaned_data['filename'])
 
     return HttpResponse('Running: view_dump_mfoc')
 
@@ -52,8 +53,8 @@ def view_nfc_poll(request):
 
     dumpform = DumpForm(request.POST)
     if dumpform.is_valid():
-
-        pimraNFC.nfc_poll(dumpform.cleaned_data['filename'])
+        dump_path = BASE_DIR + "/poll/"
+        pimraNFC.nfc_poll(dump_path, dumpform.cleaned_data['filename'])
 
     return HttpResponse('Running: view_nfc_poll')
 
